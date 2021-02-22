@@ -122,6 +122,8 @@ class IssueLocators:
     edit_comment_text_field_RTE = (By.XPATH, "//div[textarea[@id='comment']]//iframe")
     edit_comment_text_field = (By.XPATH, "//textarea[@id='comment']")
 
+    # Nextup
+    issue_nextup_create_channel = (By.XPATH, "//input[@name='nextupJiraPlusCreateChannel']")
 
 class ProjectLocators:
 

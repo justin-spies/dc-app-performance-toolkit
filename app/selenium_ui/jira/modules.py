@@ -75,6 +75,12 @@ def view_issue(webdriver, datasets):
     def measure():
         issue_page.go_to()
         issue_page.wait_for_page_loaded()
+
+        @print_timing("selenium_nextup_create_channel")
+        def sub_measure():
+            issue_page.nextup_create_channel_if_not_exists()
+        sub_measure()
+
     measure()
 
 
