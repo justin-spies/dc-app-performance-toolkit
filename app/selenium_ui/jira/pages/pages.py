@@ -1,4 +1,5 @@
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException  
 import time
 import random
 import json
@@ -64,10 +65,13 @@ class Issue(BasePage):
         self.page_url_edit_comment = url_manager_edit_page.edit_comments_url()
 
     def nextup_create_channel_if_not_exists(self):
-        create_button = self.get_elements(IssueLocators.issue_nextup_create_channel)
-        if create_button:
-            create_button.click()
-    
+        try:
+            create_button = self.get_element(IssueLocators.issue_nextup_create_channel)
+            if create_button:
+                create_button.click()
+        except NoSuchElementException:
+            pass
+
     def wait_for_issue_title(self):
         self.wait_until_visible(IssueLocators.issue_title)
 
